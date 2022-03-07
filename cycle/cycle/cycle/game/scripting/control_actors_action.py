@@ -51,5 +51,7 @@ class ControlActorsAction(Action):
         if self._keyboard_service.is_key_down('s') and self._direction != UP:
             self._direction = DOWN
         
-        cycle = cast.get_first_actor("cycles")
-        cycle.turn_head(self._direction)
+        cycles = cast.get_actors("cycles")
+
+        for cycle in cycles:
+            cycle.turn_head(self._direction)

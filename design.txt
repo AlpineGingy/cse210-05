@@ -2,9 +2,8 @@ game
 -casting
 --actor(super)
 --cast
---food
 --score
---bike
+--cycle
 -directing
 --director
 -scripting
@@ -23,3 +22,7 @@ game
 --point
 __main__
 constants
+
+ideas
+- Maybe add an end and beginning screen to show instruction and to ask if user wants to play again.
+- Make the user grow when they turn less

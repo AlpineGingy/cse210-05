@@ -38,14 +38,15 @@ class HandleCollisionsAction(Action):
         """
         score = cast.get_first_actor("scores")
         food = cast.get_first_actor("foods")
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_head()
+        cycles = cast.get_actors("cycles")
+        for cycle in cycles:
+            head = cycle.get_head()
 
-        if head.get_position().equals(food.get_position()):
-            points = food.get_points()
-            cycle.grow_tail(points)
-            score.add_points(points)
-            food.reset()
+            if head.get_position().equals(food.get_position()):
+                points = food.get_points()
+                cycle.grow_tail(points)
+                score.add_points(points)
+                food.reset()
     
     def _handle_segment_collision(self, cast):
         """Sets the game over flag if the cycle collides with one of its segments.
@@ -53,14 +54,15 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        cycle = cast.get_first_actor("cycles")
-        head = cycle.get_segments()[0]
-        segments = cycle.get_segments()[1:]
+        cycles = cast.get_actors("cycles")
+        for cycle in cycles:
+            head = cycle.get_segments()[0]
+            segments = cycle.get_segments()[1:]
         
-        for segment in segments:
-            if head.get_position().equals(segment.get_position()):
-                self._is_game_over = True
-        
+            for segment in segments:
+                if head.get_position().equals(segment.get_position()):
+                    self._is_game_over = True
+            
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the cycle and food white if the game is over.
         
@@ -68,8 +70,9 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            cycle = cast.get_first_actor("cycles")
-            segments = cycle.get_segments()
+            cycles = cast.get_actors("cycles")
+            for cycle in cycles:
+                segments = cycle.get_segments()
             food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)
