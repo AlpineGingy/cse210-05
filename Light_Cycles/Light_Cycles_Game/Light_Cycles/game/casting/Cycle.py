@@ -7,9 +7,9 @@ from game.shared.point import Point
 
 class Cycle(Actor):
     """
-    A long limbless reptile.
+    An Awsome Light Cycle
     
-    The responsibility of Snake is to move itself.
+    The responsibility of Cycle is to move itself and leave a trail behind.
 
     Attributes:
         _points (int): The number of points the food is worth.
@@ -56,13 +56,13 @@ class Cycle(Actor):
         self._segments[0].set_velocity(velocity)
 
     def _prepare_body(self):
-        x = int(constants.MAX_X / 6)
-        y = int(constants.MAX_Y / 6)
+        x = int(constants.MAX_X/10)
+        y = int(constants.MAX_Y/10)
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "#"
+            text = "0" if i == 0 else "#"
             color = constants.WHITE if i == 0 else constants.PLAYER1
             
             segment = Actor()
