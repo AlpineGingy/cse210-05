@@ -2,6 +2,7 @@ import constants
 from game.casting.actor import Actor
 from game.scripting.action import Action
 from game.shared.point import Point
+from game.casting.Cycle import Cycle
 
 class HandleCollisionsAction(Action):
     """
@@ -53,31 +54,31 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         cycle = cast.get_first_actor("cycles")
-        head = cycle.get_segments()[0]
+        self.head = cycle.get_segments()[0]
         segments = cycle.get_segments()[1:]
         cycle2 = cast.get_second_actor("cycles")
-        head2 = cycle2.get_segments()[0]
+        self.head2 = cycle2.get_segments()[0]
         segments2 = cycle2.get_segments()[1:]
         
         for segment in segments:
-            if head.get_position().equals(segment.get_position()):
+            if self.head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
                 self._winner = "Player 2 Wins"
-            elif head2.get_position().equals(segment.get_position()):
+            elif self.head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
                 self._winner = "Player 1 Wins"
-            elif head.get_position().equals(head2.get_position()):
+            elif self.head.get_position().equals(self.head2.get_position()):
                 self._is_game_over = True
                 self._winner = "Nobody Wins"
 
         for segment2 in segments2:
-            if head.get_position().equals(segment2.get_position()):
+            if self.head.get_position().equals(segment2.get_position()):
                 self._is_game_over = True
                 self._winner = "Player 2 Wins"
-            elif head2.get_position().equals(segment2.get_position()):
+            elif self.head2.get_position().equals(segment2.get_position()):
                 self._is_game_over = True
                 self._winner = "Player 1 Wins"
-            elif head.get_position().equals(head2.get_position()):
+            elif self.head.get_position().equals(self.head2.get_position()):
                 self._is_game_over = True
                 self._winner = "Nobody Wins"
         
