@@ -22,7 +22,8 @@ class Cycle(Actor):
 
     def move_next(self):
         # move all segments
-        self._segments[0].move_next()
+        for segment in self._segments:
+            segment.move_next()
         # update velocities
         for i in range(len(self._segments) - 1, 0, -1):
             trailing = self._segments[i]
@@ -58,7 +59,7 @@ class Cycle(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            color = constants.GREEN if i == 0 else constants.GREEN
             
             segment = Actor()
             segment.set_position(position)
