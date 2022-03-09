@@ -1,5 +1,5 @@
 import constants
-from game.casting.player1 import Player1
+from sgame.casting.cycle2 import Cycle2
 from game.casting.cast import Cast
 from game.casting.score import Score
 from game.casting.cycle import Cycle
@@ -19,7 +19,8 @@ def main():
     
     # create the cast
     cast = Cast()
-    cast.add_actor("cycles", Player1())
+    cast.add_actor("cycles", Cycle())
+    cast.add_actor("cycles", Cycle2())
     cast.add_actor("scores", Score())
    
     # start the game
