@@ -5,7 +5,7 @@ from game.casting.actor import Actor
 from game.shared.point import Point
 
 
-class Cycle(Actor):
+class Cycle2(Actor):
     """
     A long limbless reptile.
     
@@ -49,7 +49,7 @@ class Cycle(Actor):
             segment.set_position(position)
             segment.set_velocity(velocity)
             segment.set_text("#")
-            segment.set_color(constants.PLAYER1)
+            segment.set_color(constants.PLAYER2)
             self._segments.append(segment)
 
     def turn_head(self, velocity):
@@ -62,14 +62,14 @@ class Cycle(Actor):
         self.color_player2 = self.color_list[color_number]
 
     def _prepare_body(self):
-        x = int(constants.MAX_X / 6)
-        y = int(constants.MAX_Y / 6)
+        x = int(constants.MAX_X / 1.5)
+        y = int(constants.MAX_Y / 1.5)
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.WHITE if i == 0 else constants.PLAYER1
+            color = constants.WHITE if i == 0 else constants.PLAYER2
             
             segment = Actor()
             segment.set_position(position)
