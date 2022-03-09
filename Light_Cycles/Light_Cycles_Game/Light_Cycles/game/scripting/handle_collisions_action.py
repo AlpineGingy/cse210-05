@@ -57,18 +57,14 @@ class HandleCollisionsAction(Action):
         head = cycle.get_segments()[0]
         head2 = cycle2.get_segments()[0]
         segments = cycle.get_segments()[1:]
-        segments2 = cycle.get_segments()[1:]
+        segments2 = cycle2.get_segments()[1:]
         
         for segment in segments:
-            if head.get_position().equals(segment.get_position()):
-                self._is_game_over = True
-            elif head2.get_position().equals(segment.get_position()):
+            if head.get_position().equals(segment.get_position()) or head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
         
         for segment in segments2:
-            if head.get_position().equals(segment.get_position()):
-                self._is_game_over = True
-            elif head2.get_position().equals(segment.get_position()):
+            if head.get_position().equals(segment.get_position()) or head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
         
     def _handle_game_over(self, cast):
