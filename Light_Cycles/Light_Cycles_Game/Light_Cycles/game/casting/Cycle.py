@@ -48,7 +48,7 @@ class Cycle(Actor):
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
-            segment.set_text("0")
+            segment.set_text("#")
             segment.set_color(constants.PLAYER1)
             self._segments.append(segment)
 
