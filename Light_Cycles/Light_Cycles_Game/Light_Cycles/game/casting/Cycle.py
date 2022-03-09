@@ -1,3 +1,4 @@
+from itertools import cycle
 import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
@@ -22,8 +23,11 @@ class Cycle(Actor):
 
     def move_next(self):
         # move all segments
+        self.grow_tail(1)
         for segment in self._segments:
             segment.move_next()
+
+
         # update velocities
         for i in range(len(self._segments) - 1, 0, -1):
             trailing = self._segments[i]
@@ -40,7 +44,6 @@ class Cycle(Actor):
             velocity = tail.get_velocity()
             offset = velocity.reverse()
             position = tail.get_position().add(offset)
-            
             segment = Actor()
             segment.set_position(position)
             segment.set_velocity(velocity)
