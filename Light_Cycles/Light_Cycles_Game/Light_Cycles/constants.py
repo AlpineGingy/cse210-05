@@ -1,4 +1,5 @@
 from game.shared.color import Color
+import random
 
 COLUMNS = 40
 ROWS = 20
@@ -10,9 +11,8 @@ FONT_SIZE = 15
 CAPTION = "Cycle"
 CYCLE_LENGTH = 8
 WHITE = Color(255, 255, 255)
-RED = Color(255, 0, 0)
-YELLOW = Color(255, 255, 0)
-GREEN = Color(0, 255, 0)
-BLUE = Color(0,0,255)
-PURPLE = Color(255,0,255)
-CYAN = Color(0,255,255)
+R = random.randint(1,255)
+G = random.randint(1,255)
+B = random.randint(1,255)
+PLAYER1 = Color(R,G,B)
+PLAYER2 = Color(G,B,R)

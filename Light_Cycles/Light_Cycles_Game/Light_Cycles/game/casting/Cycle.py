@@ -1,5 +1,6 @@
 from itertools import cycle
 import constants
+import random
 from game.casting.actor import Actor
 from game.shared.point import Point
 
@@ -54,6 +55,12 @@ class Cycle(Actor):
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
     
+    def random_color(self):
+        self.color_list = [constants.RED, constants.BLUE, constants.GREEN, constants.CYAN, constants.YELLOW, constants.PURPLE]
+        color_number = random.randint(0,5)
+        self.color_player1 = self.color_list[color_number]
+        self.color_player2 = self.color_list[color_number]
+
     def _prepare_body(self):
         x = int(constants.MAX_X / 2)
         y = int(constants.MAX_Y / 2)
@@ -62,7 +69,7 @@ class Cycle(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
-            color = constants.YELLOW if i == 0 else constants.GREEN
+            color = constants.WHITE if i == 0 else constants.PLAYER1
             
             segment = Actor()
             segment.set_position(position)

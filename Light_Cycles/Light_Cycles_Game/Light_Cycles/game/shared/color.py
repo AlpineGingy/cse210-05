@@ -33,3 +33,5 @@ class Color:
             Tuple(int, int, int, int): The color as a tuple.
         """
         return (self._red, self._green, self._blue, self._alpha)   
+
+    
