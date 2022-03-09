@@ -21,7 +21,6 @@ def main():
     cast = Cast()
     cast.add_actor("cycles", Cycle())
     cast.add_actor("cycles", Cycle2())
-    #cast.add_actor("cycles", Player2())
    
     # start the game
     keyboard_service = KeyboardService()
