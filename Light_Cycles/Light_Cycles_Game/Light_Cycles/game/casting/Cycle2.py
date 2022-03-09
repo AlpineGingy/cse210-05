@@ -54,12 +54,6 @@ class Cycle2(Actor):
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
-    
-    def random_color(self):
-        self.color_list = [constants.RED, constants.BLUE, constants.GREEN, constants.CYAN, constants.YELLOW, constants.PURPLE]
-        color_number = random.randint(0,5)
-        self.color_player1 = self.color_list[color_number]
-        self.color_player2 = self.color_list[color_number]
 
     def _prepare_body(self):
         x = int(constants.MAX_X / 2)
