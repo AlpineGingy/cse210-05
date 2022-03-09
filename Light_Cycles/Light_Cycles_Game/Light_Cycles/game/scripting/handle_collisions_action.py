@@ -62,8 +62,24 @@ class HandleCollisionsAction(Action):
         for segment in segments:
             if head.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+                self._winner = "Player 2 Wins"
             elif head2.get_position().equals(segment.get_position()):
                 self._is_game_over = True
+                self._winner = "Player 1 Wins"
+            elif head.get_position().equals(head2.get_position()):
+                self._is_game_over = True
+                self._winner = "Nobody Wins"
+
+        for segment2 in segments2:
+            if head.get_position().equals(segment2.get_position()):
+                self._is_game_over = True
+                self._winner = "Player 2 Wins"
+            elif head2.get_position().equals(segment2.get_position()):
+                self._is_game_over = True
+                self._winner = "Player 1 Wins"
+            elif head.get_position().equals(head2.get_position()):
+                self._is_game_over = True
+                self._winner = "Nobody Wins"
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the cycle and food white if the game is over.
@@ -73,16 +89,15 @@ class HandleCollisionsAction(Action):
         """
         if self._is_game_over:
             cycle = cast.get_first_actor("cycles")
+            cycle2 = cast.get_second_actor("cycles")
             segments = cycle.get_segments()
+            segments2 = cycle2.get_segments()
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
             position = Point(x, y)
 
             message = Actor()
-            message.set_text("Game Over!")
+            message.set_text(f"Game Over! {self._winner}")
             message.set_position(position)
             cast.add_actor("messages", message)
-
-            for segment in segments:
-                segment.set_color(constants.WHITE)
