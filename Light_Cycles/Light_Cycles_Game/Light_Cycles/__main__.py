@@ -2,6 +2,7 @@ import constants
 
 from game.casting.cast import Cast
 from game.casting.Cycle import Cycle
+from game.casting.Cycle2 import Cycle2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -19,6 +20,7 @@ def main():
     # create the cast
     cast = Cast()
     cast.add_actor("cycles", Cycle())
+    cast.add_actor("cycles", Cycle2())
     #cast.add_actor("cycles", Player2())
    
     # start the game

@@ -62,8 +62,8 @@ class Cycle2(Actor):
         self.color_player2 = self.color_list[color_number]
 
     def _prepare_body(self):
-        x = int(constants.MAX_X / 1.5)
-        y = int(constants.MAX_Y / 1.5)
+        x = int(constants.MAX_X / 2)
+        y = int(constants.MAX_Y / 2)
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
