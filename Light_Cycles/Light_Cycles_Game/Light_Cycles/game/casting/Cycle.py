@@ -57,7 +57,7 @@ class Cycle(Actor):
 
     def _prepare_body(self):
         x = int(constants.MAX_X/6)
-        y = int(constants.MAX_Y/6)
+        y = 110
 
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
