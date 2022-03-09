@@ -62,7 +62,7 @@ class Cycle(Actor):
         for i in range(constants.CYCLE_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "8" if i == 0 else "O"
+            text = "8" if i == 0 else "#"
             color = constants.WHITE if i == 0 else constants.PLAYER1
             
             segment = Actor()
