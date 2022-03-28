@@ -42,13 +42,13 @@ class Ship(Actor):
         self._segments[0].set_velocity(velocity)
 
     def _prepare_body(self):
-        x = int(constants.MAX_X/2)
-        y = 500
+        x = 200
+        y = 550
 
         for i in range(1):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "#" if i == 0 else "#"
+            text = ".^." if i == 0 else "#"
             color = constants.WHITE if i == 0 else constants.RED
 
             
