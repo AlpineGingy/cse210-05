@@ -37,38 +37,38 @@ class ControlActorsAction(Action):
         """
 
         # left
-        if self._keyboard_service.is_key_down('a') and self._direction != RIGHT:
+        if self._keyboard_service.is_key_down('a'):
             self._direction = LEFT
         
         # right
-        if self._keyboard_service.is_key_down('d') and self._direction != LEFT:
+        if self._keyboard_service.is_key_down('d'):
             self._direction = RIGHT
         
-        # up
-        if self._keyboard_service.is_key_down('w') and self._direction != DOWN:
-            self._direction = UP
+        # # up
+        # if self._keyboard_service.is_key_down('w') and self._direction != DOWN:
+        #     self._direction = UP
         
-        # down
-        if self._keyboard_service.is_key_down('s') and self._direction != UP:
-            self._direction = DOWN
+        # # down
+        # if self._keyboard_service.is_key_down('s') and self._direction != UP:
+        #     self._direction = DOWN
 
-                # left
-        if self._keyboard_service.is_key_down('j') and self._direction2 != RIGHT:
-            self._direction2 = LEFT
+        #         # left
+        # if self._keyboard_service.is_key_down('j') and self._direction2 != RIGHT:
+        #     self._direction2 = LEFT
         
-        # right
-        if self._keyboard_service.is_key_down('l') and self._direction2 != LEFT:
-            self._direction2 = RIGHT
+        # # right
+        # if self._keyboard_service.is_key_down('l') and self._direction2 != LEFT:
+        #     self._direction2 = RIGHT
         
-        # up
-        if self._keyboard_service.is_key_down('i') and self._direction2 != DOWN:
-            self._direction2 = UP
+        # # up
+        # if self._keyboard_service.is_key_down('i') and self._direction2 != DOWN:
+        #     self._direction2 = UP
         
-        # down
-        if self._keyboard_service.is_key_down('k') and self._direction2 != UP:
-            self._direction2 = DOWN
+        # # down
+        # if self._keyboard_service.is_key_down('k') and self._direction2 != UP:
+        #     self._direction2 = DOWN
         
-        cycle = cast.get_first_actor("cycles")
-        cycle.turn_head(self._direction)
-        cycle2 = cast.get_second_actor("cycles")
-        cycle2.turn_head(self._direction2)
+        ship = cast.get_first_actor("ship")
+        ship.turn_head(self._direction)
+        # cycle2 = cast.get_second_actor("cycles")
+        # cycle2.turn_head(self._direction2)

@@ -1,6 +1,7 @@
 import constants
 
 from game.casting.cast import Cast
+from game.casting.ship import Ship
 from game.casting.Cycle import Cycle
 from game.casting.Cycle2 import Cycle2
 from game.scripting.script import Script
@@ -19,8 +20,7 @@ def main():
      
     # create the cast
     cast = Cast()
-    cast.add_actor("cycles", Cycle())
-    cast.add_actor("cycles", Cycle2())
+    cast.add_actor("ship", Ship())
    
     # start the game
     keyboard_service = KeyboardService()
