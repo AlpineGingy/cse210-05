@@ -110,7 +110,7 @@ class ControlActorsAction(Action):
                 first_alienLine3.move_down()
 
         first_alienLine4 = cast.get_first_actor('alienLine4')
-        fourth_line_aliens = first_alienLine2.get_aliens()
+        fourth_line_aliens = first_alienLine4.get_aliens()
         for alien in fourth_line_aliens:
             if alien.get_position().get_x() >= 800:
                 first_alienLine4.turn_aliens(self._direction2)

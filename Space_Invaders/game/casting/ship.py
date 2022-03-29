@@ -42,8 +42,8 @@ class Ship(Actor):
         self._segments[0].set_velocity(velocity)
 
     def _prepare_body(self):
-        x = 200
-        y = 550
+        x = 300
+        y = 500
 
         for i in range(1):
             position = Point(x - i * constants.CELL_SIZE, y)

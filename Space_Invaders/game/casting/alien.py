@@ -53,7 +53,7 @@ class Alien(Actor):
             alien.set_velocity(velocity)
 
     def _prepare_body(self):
-        x = 760
+        x = 800
         y = 100
 
         for i in range(20):

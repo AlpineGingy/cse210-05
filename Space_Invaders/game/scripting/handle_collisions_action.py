@@ -18,16 +18,16 @@ class HandleCollisionsAction(Action):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
 
-    # def execute(self, cast, script):
-    #     """Executes the handle collisions action.
+    def execute(self, cast, script):
+         """Executes the handle collisions action.
 
-    #     Args:
-    #         cast (Cast): The cast of Actors in the game.
-    #         script (Script): The script of Actions in the game.
-    #     """
-    #     if not self._is_game_over:
-    #         self._handle_segment_collision(cast)
-    #         self._handle_game_over(cast)
+         Args:
+             cast (Cast): The cast of Actors in the game.
+             script (Script): The script of Actions in the game.
+         """
+         if not self._is_game_over:
+             self._handle_segment_collision(cast)
+             self._handle_game_over(cast)
 
     # def _handle_food_collision(self, cast):
     #     """Updates the score nd moves the food if the snake collides with the food.
@@ -46,7 +46,7 @@ class HandleCollisionsAction(Action):
     #         score.add_points(points)
     #         food.reset()
     
-    # def _handle_segment_collision(self, cast):
+    def _handle_segment_collision(self, cast):
     #     """Sets the game over flag if the cycle collides with one of its segments.
         
     #     Args:
@@ -58,7 +58,32 @@ class HandleCollisionsAction(Action):
     #     cycle2 = cast.get_second_actor("cycles")
     #     self.head2 = cycle2.get_segments()[0]
     #     segments2 = cycle2.get_segments()[1:]
-        
+        ship = cast.get_first_actor('ship')
+        first_alienLine1 = cast.get_first_actor('alienLine1')
+        first_line_aliens = first_alienLine1.get_aliens()
+        first_alienLine2 = cast.get_first_actor('alienLine2')
+        second_line_aliens = first_alienLine2.get_aliens()
+        first_alienLine3 = cast.get_first_actor('alienLine3')
+        third_line_aliens = first_alienLine3.get_aliens()
+        first_alienLine4 = cast.get_first_actor('alienLine4')
+        fourth_line_aliens = first_alienLine4.get_aliens()
+
+        for alien in first_line_aliens:
+            if alien.get_position().get_y() >= 500:
+                self._is_game_over = True
+                self._message = "Aliens Win"
+        for alien in second_line_aliens:
+            if alien.get_position().get_y() >= 500:
+                self._is_game_over = True
+                self._message = "Aliens Win"
+        for alien in third_line_aliens:
+            if alien.get_position().get_y() >= 500:
+                self._is_game_over = True
+                self._message = "Aliens Win"
+        for alien in fourth_line_aliens:
+            if alien.get_position().get_y() >= 500:
+                self._is_game_over = True
+                self._message = "Aliens Win"
     #     for segment in segments:
     #         if self.head.get_position().equals(segment.get_position()):
     #             self._is_game_over = True
@@ -81,23 +106,19 @@ class HandleCollisionsAction(Action):
     #             self._is_game_over = True
     #             self._winner = "Nobody Wins"
         
-    # def _handle_game_over(self, cast):
+    def _handle_game_over(self, cast):
     #     """Shows the 'game over' message and turns the cycle and food white if the game is over.
         
     #     Args:
     #         cast (Cast): The cast of Actors in the game.
     #     """
-    #     if self._is_game_over:
-    #         cycle = cast.get_first_actor("cycles")
-    #         cycle2 = cast.get_second_actor("cycles")
-    #         segments = cycle.get_segments()
-    #         segments2 = cycle2.get_segments()
+         if self._is_game_over:
 
-    #         x = int(constants.MAX_X / 2)
-    #         y = int(constants.MAX_Y / 2)
-    #         position = Point(x, y)
+             x = int(constants.MAX_X / 2)
+             y = int(constants.MAX_Y / 2)
+             position = Point(x, y)
 
-    #         message = Actor()
-    #         message.set_text(f"Game Over! {self._winner}")
-    #         message.set_position(position)
-    #         cast.add_actor("messages", message)
+             message = Actor()
+             message.set_text(f"Game Over! {self._message}")
+             message.set_position(position)
+             cast.add_actor("messages", message)
