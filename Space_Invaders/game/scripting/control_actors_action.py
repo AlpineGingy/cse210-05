@@ -76,15 +76,15 @@ class ControlActorsAction(Action):
         for alien in aliens:
             if alien.get_position().get_x() >= 800:
                 first_alien.turn_aliens(self._direction2)
-                # y = alien.get_position().get_y() + 20
-                # x = alien.get_position().get_x()
-                # alien.set_position(x, y)
+                y = alien.get_position().get_y() + 20
+                x = alien.get_position().get_x()
+                alien.set_position(Point(x, y))
 
 
             elif alien.get_position().get_x() <= 100:
                 first_alien.turn_aliens(self._direction3)
-                # y = alien.get_position().get_y() + 20
-                # x = alien.get_position().get_x()
-                # alien.set_position(x, y)
+                y = alien.get_position().get_y() + 20
+                x = alien.get_position().get_x()
+                alien.set_position(Point(x, y))
             # cycle2 = cast.get_second_actor("cycles")
             # cycle2.turn_head(self._direction2)
