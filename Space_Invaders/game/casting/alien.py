@@ -26,6 +26,12 @@ class Alien(Actor):
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
 
+    def move_down(self):
+        for alien in self._aliens:
+                y = alien.get_position().get_y() + 20
+                x = alien.get_position().get_x()
+                alien.set_position(Point(x, y))
+
     def get_head(self):
         return self._aliens[0]
 
