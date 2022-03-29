@@ -5,7 +5,7 @@ from game.casting.actor import Actor
 from game.shared.point import Point
 
 
-class Cycle(Actor):
+class Alien(Actor):
     """
     An Awsome Light Cycle
     
@@ -24,7 +24,6 @@ class Cycle(Actor):
 
     def move_next(self):
         # move all segments
-        self.grow_tail(1)
         for segment in self._segments:
             segment.move_next()
 
@@ -54,16 +53,18 @@ class Cycle(Actor):
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)
+        if self._segments[0].get_position() == constants.MAX_X:
+            self._segment[0].set_velocity(-velocity)
 
     def _prepare_body(self):
-        x = int(constants.MAX_X - constants.MAX_X)
+        x = 750
         y = 300
 
-        for i in range(1):
+        for i in range(20):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "0" if i == 0 else "#"
-            color = constants.WHITE if i == 0 else constants.RED
+            text = "A" if i == 0 else "A"
+            color = constants.WHITE if i == 0 else constants.WHITE
 
             
             segment = Actor()

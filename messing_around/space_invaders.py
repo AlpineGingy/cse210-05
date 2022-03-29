@@ -63,8 +63,8 @@ for num in range(no_of_invaders):
     invaderImage1 = pygame.image.load('messing_around/images/alien.png')
     invaderImage = pygame.transform.scale(invaderImage1, DEFAULT_IMAGE_SIZE)
     invaderlist.append(invaderImage)
-    invader_X.append(random.randint(64, 737))
-    invader_Y.append(random.randint(30, 180))
+    invader_X.append(800 / (num + 1))
+    invader_Y.append(30)
     invader_Xchange.append(.6)
     invader_Ychange.append(40)
   

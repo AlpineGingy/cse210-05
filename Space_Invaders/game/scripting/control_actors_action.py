@@ -27,6 +27,7 @@ class ControlActorsAction(Action):
         self._keyboard_service = keyboard_service
         self._direction = RIGHT
         self._direction2 = LEFT
+        self._direction3 = RIGHT
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -70,5 +71,10 @@ class ControlActorsAction(Action):
         
         ship = cast.get_first_actor("ship")
         ship.turn_head(self._direction)
+        alien = cast.get_first_actor('alien')
+        if alien.get_position().get_x() == 800:
+            alien.turn_head(self._direction2)
+        elif alien.get_position().get_x() == 100:
+            alien.turn_head(self._direction3)
         # cycle2 = cast.get_second_actor("cycles")
         # cycle2.turn_head(self._direction2)
