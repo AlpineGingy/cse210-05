@@ -1,4 +1,3 @@
-from itertools import cycle
 import constants
 import random
 from game.casting.actor import Actor
@@ -16,49 +15,47 @@ class Alien(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._segments = []
+        self._aliens = []
         self._prepare_body()
 
-    def get_segments(self):
-        return self._segments
+    def get_aliens(self):
+        return self._aliens
 
     def move_next(self):
         # move all segments
-        for segment in self._segments:
-            segment.move_next()
+        for alien in self._aliens:
+            alien.move_next()
 
 
         # update velocities
-        for i in range(len(self._segments) - 1, 0, -1):
-            trailing = self._segments[i]
-            previous = self._segments[i - 1]
+        for i in range(len(self._aliens) - 1, 0, -1):
+            trailing = self._aliens[i]
+            previous = self._aliens[i - 1]
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
 
     def get_head(self):
-        return self._segments[0]
+        return self._aliens[0]
 
-    def grow_tail(self, number_of_segments):
-        for i in range(number_of_segments):
-            tail = self._segments[-1]
+    def add_alien(self, number_of_aliens):
+        for i in range(number_of_aliens):
+            tail = self._aliens[-1]
             velocity = tail.get_velocity()
             offset = velocity.reverse()
             position = tail.get_position().add(offset)
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text("#")
-            segment.set_color(constants.RED)
-            self._segments.append(segment)
+            alien = Actor()
+            alien.set_position(position)
+            alien.set_velocity(velocity)
+            alien.set_text("#")
+            alien.set_color(constants.RED)
+            self._aliens.append(alien)
 
     def turn_head(self, velocity):
-        self._segments[0].set_velocity(velocity)
-        if self._segments[0].get_position() == constants.MAX_X:
-            self._segment[0].set_velocity(-velocity)
+        self._aliens[0].set_velocity(velocity)
 
     def _prepare_body(self):
-        x = 750
-        y = 300
+        x = 760
+        y = 100
 
         for i in range(20):
             position = Point(x - i * constants.CELL_SIZE, y)
@@ -67,9 +64,9 @@ class Alien(Actor):
             color = constants.WHITE if i == 0 else constants.WHITE
 
             
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text(text)
-            segment.set_color(color)
-            self._segments.append(segment)
+            alien = Actor()
+            alien.set_position(position)
+            alien.set_velocity(velocity)
+            alien.set_text(text)
+            alien.set_color(color)
+            self._aliens.append(alien)

@@ -33,7 +33,7 @@ class DrawActorsAction(Action):
         # cycle2 = cast.get_second_actor("cycles")
         segment = ship.get_segments()
         alien = cast.get_first_actor("alien")
-        aliens = alien.get_segments()
+        aliens = alien.get_aliens()
         # segments = cycle.get_segments()
         # segments2 = cycle2.get_segments()
         messages = cast.get_actors("messages")

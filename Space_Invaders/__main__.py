@@ -3,8 +3,6 @@ import constants
 from game.casting.cast import Cast
 from game.casting.ship import Ship
 from game.casting.alien import Alien
-from game.casting.Cycle import Cycle
-from game.casting.Cycle2 import Cycle2
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction

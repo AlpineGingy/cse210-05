@@ -71,10 +71,17 @@ class ControlActorsAction(Action):
         
         ship = cast.get_first_actor("ship")
         ship.turn_head(self._direction)
-        alien = cast.get_first_actor('alien')
-        if alien.get_position().get_x() == 800:
-            alien.turn_head(self._direction2)
-        elif alien.get_position().get_x() == 100:
-            alien.turn_head(self._direction3)
-        # cycle2 = cast.get_second_actor("cycles")
-        # cycle2.turn_head(self._direction2)
+        first_alien = cast.get_first_actor('alien')
+        aliens = first_alien.get_aliens()
+        for alien in aliens:
+            if alien.get_position().get_x() >= 800:
+                first_alien.turn_head(self._direction2)
+                y = alien.get_position().get_y()
+                x = alien.get_position().get_x()
+                alien.set_position(x, y)
+
+
+            elif alien.get_position().get_x() <= 100:
+                first_alien.turn_head(self._direction3)
+            # cycle2 = cast.get_second_actor("cycles")
+            # cycle2.turn_head(self._direction2)
