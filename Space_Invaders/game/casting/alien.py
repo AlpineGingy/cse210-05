@@ -5,14 +5,6 @@ from game.shared.point import Point
 
 
 class Alien(Actor):
-    """
-    An Awsome Light Cycle
-    
-    The responsibility of Cycle is to move itself and leave a trail behind.
-
-    Attributes:
-        _points (int): The number of points the food is worth.
-    """
     def __init__(self):
         super().__init__()
         self._aliens = []
@@ -50,8 +42,9 @@ class Alien(Actor):
             alien.set_color(constants.RED)
             self._aliens.append(alien)
 
-    def turn_head(self, velocity):
-        self._aliens[0].set_velocity(velocity)
+    def turn_aliens(self, velocity):
+        for alien in self._aliens:
+            alien.set_velocity(velocity)
 
     def _prepare_body(self):
         x = 760
@@ -61,7 +54,7 @@ class Alien(Actor):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "A" if i == 0 else "A"
-            color = constants.WHITE if i == 0 else constants.WHITE
+            color = constants.GREEN if i == 0 else constants.GREEN
 
             
             alien = Actor()
