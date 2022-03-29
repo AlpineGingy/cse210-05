@@ -2,6 +2,7 @@ import constants
 import random
 from game.casting.actor import Actor
 from game.shared.point import Point
+import pygame
 
 
 class Alien(Actor):
@@ -9,6 +10,7 @@ class Alien(Actor):
         super().__init__()
         self._aliens = []
         self._prepare_body()
+        
 
     def get_aliens(self):
         return self._aliens
@@ -53,6 +55,9 @@ class Alien(Actor):
             alien.set_velocity(velocity)
 
     def _prepare_body(self):
+        DEFAULT_IMAGE_SIZE = (20, 20)
+        invaderImage1 = pygame.image.load('messing_around/images/alien.png')
+        invaderImage = pygame.transform.scale(invaderImage1, DEFAULT_IMAGE_SIZE)
         x = 800
         y = 100
 
