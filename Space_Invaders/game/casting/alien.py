@@ -49,6 +49,9 @@ class Alien(Actor):
             alien.set_text("#")
             alien.set_color(constants.RED)
             self._aliens.append(alien)
+    
+    def remove_alien(self, i):
+        self._aliens.pop(i - 1)
 
     def turn_aliens(self, velocity):
         for alien in self._aliens:

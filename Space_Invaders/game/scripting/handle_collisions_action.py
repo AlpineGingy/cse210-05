@@ -71,26 +71,43 @@ class HandleCollisionsAction(Action):
         fourth_line_aliens = first_alienLine4.get_aliens()
 
         for alien in first_line_aliens:
-            if alien.get_position().get_y() >= 500:
-                self._is_game_over = True
-                self._message = "Aliens Win"
-            else:
-                for bullet in bullets:
-                    if alien.get_position().equals(bullet.get_position()):
+            for bullet in bullets:
+                if alien.get_position().get_y() >= 500:
+                    self._is_game_over = True
+                    self._message = "Aliens Win"
+                elif alien.get_position() == bullet.get_position():
                         Bullet.remove_bullet(bullet + 1)
+                        first_alienLine1.remove_alien(alien + 1)
+
 
         for alien in second_line_aliens:
-            if alien.get_position().get_y() >= 500:
-                self._is_game_over = True
-                self._message = "Aliens Win"
+            for bullet in bullets:
+                if alien.get_position().get_y() >= 500:
+                    self._is_game_over = True
+                    self._message = "Aliens Win"
+                elif alien.get_position().equals(bullet.get_position()):
+                    Bullet.remove_bullet(bullet + 1)
+                    first_alienLine2.remove_alien(alien + 1)
+
+
         for alien in third_line_aliens:
-            if alien.get_position().get_y() >= 500:
-                self._is_game_over = True
-                self._message = "Aliens Win"
+            for bullet in bullets:
+                if alien.get_position().get_y() >= 500:
+                    self._is_game_over = True
+                    self._message = "Aliens Win"
+                elif alien.get_position().equals(bullet.get_position()):
+                    Bullet.remove_bullet(bullet + 1)
+                    first_alienLine3.remove_alien(alien + 1)
+
+
         for alien in fourth_line_aliens:
-            if alien.get_position().get_y() >= 500:
-                self._is_game_over = True
-                self._message = "Aliens Win"
+            for bullet in bullets:
+                if alien.get_position().get_y() >= 500:
+                    self._is_game_over = True
+                    self._message = "Aliens Win"
+                elif alien.get_position().equals(bullet.get_position()):
+                    Bullet.remove_bullet(bullet + 1)
+                    first_alienLine4.remove_alien(alien + 1)
 
         for bullet in bullets:
             x =+ 1
