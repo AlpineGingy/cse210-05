@@ -37,6 +37,9 @@ class Ship(Actor):
 
     def get_head(self):
         return self._segments[0]
+    
+    def get_position(self):
+        return self.get_head().get_position()
 
     def turn_head(self, velocity):
         self._segments[0].set_velocity(velocity)

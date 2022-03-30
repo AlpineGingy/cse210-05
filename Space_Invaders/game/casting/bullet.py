@@ -44,6 +44,10 @@ class Bullet(Actor):
 
     def get_bullet(self):
         return self._bullets[0]
+    
+    def remove_bullet(self, i):
+        self._bullets.pop(i - 1)
+        
 
 
     def turn_head(self, velocity):

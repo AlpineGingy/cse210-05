@@ -59,6 +59,8 @@ class HandleCollisionsAction(Action):
     #     self.head2 = cycle2.get_segments()[0]
     #     segments2 = cycle2.get_segments()[1:]
         ship = cast.get_first_actor('ship')
+        Bullet = cast.get_first_actor('bullet')
+        bullets = Bullet.get_bullets()
         first_alienLine1 = cast.get_first_actor('alienLine1')
         first_line_aliens = first_alienLine1.get_aliens()
         first_alienLine2 = cast.get_first_actor('alienLine2')
@@ -72,6 +74,11 @@ class HandleCollisionsAction(Action):
             if alien.get_position().get_y() >= 500:
                 self._is_game_over = True
                 self._message = "Aliens Win"
+            else:
+                for bullet in bullets:
+                    if alien.get_position().equals(bullet.get_position()):
+                        Bullet.remove_bullet(bullet + 1)
+
         for alien in second_line_aliens:
             if alien.get_position().get_y() >= 500:
                 self._is_game_over = True
@@ -84,6 +91,13 @@ class HandleCollisionsAction(Action):
             if alien.get_position().get_y() >= 500:
                 self._is_game_over = True
                 self._message = "Aliens Win"
+
+        for bullet in bullets:
+            x =+ 1
+            if bullet.get_position().get_y() <= 10:
+                Bullet.remove_bullet(x)
+
+
     #     for segment in segments:
     #         if self.head.get_position().equals(segment.get_position()):
     #             self._is_game_over = True
