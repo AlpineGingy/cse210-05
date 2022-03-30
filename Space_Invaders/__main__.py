@@ -3,6 +3,7 @@ import constants
 from game.casting.cast import Cast
 from game.casting.ship import Ship
 from game.casting.alien import Alien
+from game.casting.bullet import Bullet
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -15,10 +16,12 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 
+
 def main():
      
     # create the cast
     cast = Cast()
+    cast.add_actor("bullet", Bullet())
     cast.add_actor("ship", Ship())
     cast.add_actor("alienLine1", Alien())
     cast.add_actor("alienLine2", Alien())

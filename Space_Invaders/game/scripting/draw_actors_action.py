@@ -32,6 +32,8 @@ class DrawActorsAction(Action):
         # cycle = cast.get_first_actor("cycles")
         # cycle2 = cast.get_second_actor("cycles")
         segment = ship.get_segments()
+        bullet = cast.get_first_actor('bullet')
+        bullets = bullet.get_bullets()
         alienLine1 = cast.get_first_actor("alienLine1")
         aliensLine1 = alienLine1.get_aliens()
 
@@ -53,6 +55,7 @@ class DrawActorsAction(Action):
         self._video_service.draw_actors(aliensLine2)
         self._video_service.draw_actors(aliensLine3)
         self._video_service.draw_actors(aliensLine4)
+        self._video_service.draw_actors(bullet)
         #self._video_service.draw_actor(food)
         # self._video_service.draw_actors(segments)
         # self._video_service.draw_actors(segments2)

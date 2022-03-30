@@ -1,11 +1,13 @@
 from itertools import cycle
+from turtle import position
 import constants
 import random
 from game.casting.actor import Actor
 from game.shared.point import Point
+from game.casting.cast import Cast
 
 
-class Cycle(Actor):
+class Bullet(Actor):
     """
     An Awsome Light Cycle
     
@@ -16,59 +18,46 @@ class Cycle(Actor):
     """
     def __init__(self):
         super().__init__()
-        self._segments = []
-        self._prepare_body()
+        self._bullets = []
 
-    def get_segments(self):
-        return self._segments
+    def get_bullets(self):
+        return self._bullets
+
+    def __iter__(self):
+        for bullet in self._bullets:
+            yield bullet
 
     def move_next(self):
         # move all segments
-        self.grow_tail(1)
-        for segment in self._segments:
-            segment.move_next()
+        for bullet in self._bullets:
+            bullet.move_next()
+
+    
 
 
         # update velocities
-        for i in range(len(self._segments) - 1, 0, -1):
-            trailing = self._segments[i]
-            previous = self._segments[i - 1]
+        for i in range(len(self._bullets) - 1, 0, -1):
+            trailing = self._bullets[i]
+            previous = self._bullets[i - 1]
             velocity = previous.get_velocity()
             trailing.set_velocity(velocity)
 
-    def get_head(self):
-        return self._segments[0]
+    def get_bullet(self):
+        return self._bullets[0]
 
-    def grow_tail(self, number_of_segments):
-        for i in range(number_of_segments):
-            tail = self._segments[-1]
-            velocity = tail.get_velocity()
-            offset = velocity.reverse()
-            position = tail.get_position().add(offset)
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text("#")
-            segment.set_color(constants.RED)
-            self._segments.append(segment)
 
     def turn_head(self, velocity):
-        self._segments[0].set_velocity(velocity)
+        self._bullets[0].set_velocity(velocity)
 
-    def _prepare_body(self):
-        x = int(constants.MAX_X - constants.MAX_X)
-        y = 300
-
-        for i in range(1):
-            position = Point(x - i * constants.CELL_SIZE, y)
-            velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = "0" if i == 0 else "#"
-            color = constants.WHITE if i == 0 else constants.RED
-
-            
-            segment = Actor()
-            segment.set_position(position)
-            segment.set_velocity(velocity)
-            segment.set_text(text)
-            segment.set_color(color)
-            self._segments.append(segment)
+    def _prepare_body(self, velocity, cast):
+        ship = cast.get_first_actor("ship")
+        position = ship.get_position()
+        text = "^"
+        color = constants.WHITE
+        
+        bullet = Actor()
+        bullet.set_position(position)
+        bullet.set_velocity(velocity)
+        bullet.set_text(text)
+        bullet.set_color(color)
+        self._bullets.append(bullet)

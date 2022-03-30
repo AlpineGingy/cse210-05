@@ -2,6 +2,9 @@ from turtle import right
 import constants
 from game.scripting.action import Action
 from game.shared.point import Point
+from game.casting.actor import Actor
+from game.casting.cast import Cast
+from game.scripting.draw_actors_action import DrawActorsAction
 
 LEFT = Point(-constants.CELL_SIZE, 0)
 RIGHT= Point(constants.CELL_SIZE, 0)
@@ -28,6 +31,8 @@ class ControlActorsAction(Action):
         self._direction = RIGHT
         self._direction2 = LEFT
         self._direction3 = RIGHT
+        self._bullet_direction = UP
+        self.cast = Cast()
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -46,8 +51,16 @@ class ControlActorsAction(Action):
             self._direction = RIGHT
         
         # # Space
-        # if self._keyboard_service.is_key_down('space'):
-        #     self._direction = UP
+        if self._keyboard_service.is_key_down('space'):
+            self._bullet_direction = UP
+            bullet = cast.get_first_actor('bullet')
+            bullet._prepare_body(self._bullet_direction, cast)
+
+
+
+            
+
+
         
         # # down
         # if self._keyboard_service.is_key_down('s') and self._direction != UP:
