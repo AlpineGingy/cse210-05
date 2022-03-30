@@ -81,9 +81,11 @@ class HandleCollisionsAction(Action):
                 if alien.get_position().get_y() >= 500:
                     self._is_game_over = True
                     self._message = "Aliens Win"
-                elif alien.get_position() == bullet.get_position():
+                elif alien.get_position().equals(bullet.get_position()):
                     Bullet.remove_bullet(y1)
                     first_alienLine1.remove_alien(x1)
+
+                
 
 
         for alien in second_line_aliens:

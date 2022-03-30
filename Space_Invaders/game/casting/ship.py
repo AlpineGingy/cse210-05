@@ -45,7 +45,7 @@ class Ship(Actor):
         self._segments[0].set_velocity(velocity)
 
     def _prepare_body(self):
-        x = 300
+        x = 800
         y = 500
 
         for i in range(1):
