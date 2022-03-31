@@ -10,6 +10,8 @@ LEFT = Point(-constants.CELL_SIZE, 0)
 RIGHT= Point(constants.CELL_SIZE, 0)
 UP = Point(0, -constants.CELL_SIZE)
 DOWN = Point(0, constants.CELL_SIZE)
+STILLRIGHT = Point(800, 0)
+STILLLEFT = Point(100, 0)
 
 class ControlActorsAction(Action):
     """
@@ -82,12 +84,21 @@ class ControlActorsAction(Action):
         # if self._keyboard_service.is_key_down('k') and self._direction2 != UP:
         #     self._direction2 = DOWN
         
-        ship = cast.get_first_actor("ship")
-        ship.turn_head(self._direction)
+        ship1 = cast.get_first_actor("ship")
+        ships = ship1.get_segments()
+        ship1.turn_head(self._direction)
+        # for ship in ships:
+        #     if ship.get_position().get_x() >= 800:
+        #         ship1.turn_head(self._direction2)
+        #     elif ship.get_position().get_x() <= 100:
+        #         ship1.turn_head(self._direction3)
+        #     else:
+                
+
         first_alienLine1 = cast.get_first_actor('alienLine1')
         first_line_aliens = first_alienLine1.get_aliens()
         for alien in first_line_aliens:
-            if alien.get_position().get_x() >= 800:
+            if alien.get_position().get_x() == 800:
                 first_alienLine1.turn_aliens(self._direction2)
                 first_alienLine1.move_down()
 
@@ -99,7 +110,7 @@ class ControlActorsAction(Action):
         first_alienLine2 = cast.get_first_actor('alienLine2')
         second_line_aliens = first_alienLine2.get_aliens()
         for alien in second_line_aliens:
-            if alien.get_position().get_x() >= 800:
+            if alien.get_position().get_x() == 800:
                 first_alienLine2.turn_aliens(self._direction2)
                 first_alienLine2.move_down()
 
@@ -113,7 +124,7 @@ class ControlActorsAction(Action):
         first_alienLine3 = cast.get_first_actor('alienLine3')
         third_line_aliens = first_alienLine2.get_aliens()
         for alien in third_line_aliens:
-            if alien.get_position().get_x() >= 800:
+            if alien.get_position().get_x() == 800:
                 first_alienLine3.turn_aliens(self._direction2)
                 first_alienLine3.move_down()
 
@@ -125,7 +136,7 @@ class ControlActorsAction(Action):
         first_alienLine4 = cast.get_first_actor('alienLine4')
         fourth_line_aliens = first_alienLine4.get_aliens()
         for alien in fourth_line_aliens:
-            if alien.get_position().get_x() >= 800:
+            if alien.get_position().get_x() == 800:
                 first_alienLine4.turn_aliens(self._direction2)
                 first_alienLine4.move_down()
 
@@ -133,6 +144,7 @@ class ControlActorsAction(Action):
             elif alien.get_position().get_x() <= 100:
                 first_alienLine4.turn_aliens(self._direction3)
                 first_alienLine4.move_down()
+
 
 
             # cycle2 = cast.get_second_actor("cycles")

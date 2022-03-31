@@ -42,7 +42,8 @@ class Ship(Actor):
         return self.get_head().get_position()
 
     def turn_head(self, velocity):
-        self._segments[0].set_velocity(velocity)
+        for segment in self._segments:
+            segment.set_velocity(velocity)
 
     def _prepare_body(self):
         x = 800

@@ -21,12 +21,12 @@ class Alien(Actor):
             alien.move_next()
 
 
-        # update velocities
-        for i in range(len(self._aliens) - 1, 0, -1):
-            trailing = self._aliens[i]
-            previous = self._aliens[i - 1]
-            velocity = previous.get_velocity()
-            trailing.set_velocity(velocity)
+        # # update velocities
+        # for i in range(len(self._aliens) - 1, 0, -1):
+        #     trailing = self._aliens[i]
+        #     previous = self._aliens[i - 1]
+        #     velocity = previous.get_velocity()
+        #     trailing.set_velocity(velocity)
 
     def move_down(self):
         for alien in self._aliens:
