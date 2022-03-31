@@ -11,8 +11,8 @@ LEFT = Point(-constants.CELL_SIZE, 0)
 RIGHT= Point(constants.CELL_SIZE, 0)
 UP = Point(0, -constants.CELL_SIZE)
 DOWN = Point(0, constants.CELL_SIZE)
-STILLRIGHT = Point(800, 0)
-STILLLEFT = Point(100, 0)
+STILLRIGHT = Point(0, 0)
+STILLLEFT = Point(0, 0)
 
 class ControlActorsAction(Action):
     """
@@ -31,7 +31,7 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = RIGHT
+        self._direction = LEFT
         self._direction2 = LEFT
         self._direction3 = RIGHT
         self._bullet_direction = UP
@@ -88,10 +88,20 @@ class ControlActorsAction(Action):
         ship1 = cast.get_first_actor("ship")
         ships = ship1.get_segments()
         for ship in ships:
-            if ship.get_position().get_x() >= 800:
-                ship1.turn_head(self._direction2)
-            elif ship.get_position().get_x() <= 100:
-                ship1.turn_head(self._direction3)
+            if ship.get_position().get_x() == 100:
+                if self._keyboard_service.is_key_down('d'):
+                    self._direction = RIGHT
+                    ship1.turn_head(self._direction)
+                else:
+                    ship1.turn_head(STILLRIGHT)
+            elif ship.get_position().get_x() == 800:
+                ship1.turn_head(STILLLEFT)
+                if self._keyboard_service.is_key_down('a'):
+                    self._direction = LEFT
+                    ship1.turn_head(self._direction)
+                else:
+                    ship1.turn_head(STILLRIGHT)
+                
             else:
                 ship1.turn_head(self._direction)
 
@@ -102,7 +112,7 @@ class ControlActorsAction(Action):
         move_down_right = False
         move_down_left = False
         for alien in first_line_aliens:
-            if alien.get_position().get_x() == 800:
+            if alien.get_position().get_x() >= 800:
                 move_down_right = True
             elif alien.get_position().get_x() <= 100:
                 move_down_left = True

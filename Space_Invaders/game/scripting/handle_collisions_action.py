@@ -62,7 +62,7 @@ class HandleCollisionsAction(Action):
         # fourth_line_aliens = first_alienLine4.get_aliens()
         hit_alien_index = 0
         for alien in first_line_aliens:
-            if alien.get_position().get_y() >= 500:
+            if alien.get_position().get_y() == 500:                
                 self._is_game_over = True
                 self._message = "Aliens Win"
             hit_bullet_index = 0
@@ -136,8 +136,12 @@ class HandleCollisionsAction(Action):
         # first_alienLine4 = cast.get_first_actor('alienLine4')
         # fourth_line_aliens = first_alienLine4.get_aliens()
             
+
+
+
         if len(first_line_aliens):
-            self._is_game_over = False
+            pass
+
         else:
         #     if len(second_line_aliens):
         #         self._is_game_over = False
