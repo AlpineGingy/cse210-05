@@ -9,7 +9,7 @@ from game.casting.cast import Cast
 
 class Bullet(Actor):
     """
-    An Awsome Light Cycle
+    An Awesome Light Cycle
     
     The responsibility of Cycle is to move itself and leave a trail behind.
 
@@ -46,7 +46,7 @@ class Bullet(Actor):
         return self._bullets[0]
     
     def remove_bullet(self, i):
-        self._bullets.pop(i - 1)
+        self._bullets.pop(i)
         
 
 
