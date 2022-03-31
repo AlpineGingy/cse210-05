@@ -63,13 +63,14 @@ class Alien(Actor):
         x = 800
         y = 100
 
-        for row in range(1):
+        for row in range(5):
             for i in range(20):
                 position = Point(x - i * constants.CELL_SIZE, y + row * constants.CELL_SIZE)
-                if i == 4 and row == 0:
-                    continue
+                # if i == 4 and row == 0:
+                #     continue
                 velocity = Point(1 * constants.CELL_SIZE, 0)
-                text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i]
+                text = "A"
+                #"ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i]
                 color = constants.GREEN
 
                 

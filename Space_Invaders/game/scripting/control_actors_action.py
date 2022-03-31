@@ -87,13 +87,14 @@ class ControlActorsAction(Action):
         
         ship1 = cast.get_first_actor("ship")
         ships = ship1.get_segments()
-        ship1.turn_head(self._direction)
-        # for ship in ships:
-        #     if ship.get_position().get_x() >= 800:
-        #         ship1.turn_head(self._direction2)
-        #     elif ship.get_position().get_x() <= 100:
-        #         ship1.turn_head(self._direction3)
-        #     else:
+        for ship in ships:
+            if ship.get_position().get_x() >= 800:
+                ship1.turn_head(self._direction2)
+            elif ship.get_position().get_x() <= 100:
+                ship1.turn_head(self._direction3)
+            else:
+                ship1.turn_head(self._direction)
+
                 
 
         first_alienLine1:Alien = cast.get_first_actor('alienLine1')
