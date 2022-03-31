@@ -3,7 +3,7 @@ import constants
 from game.casting.cast import Cast
 from game.casting.ship import Ship
 from game.casting.alien import Alien
-from game.casting.bullet import Bullet
+from game.casting.bullet import Bullet   
 from game.scripting.script import Script
 from game.scripting.control_actors_action import ControlActorsAction
 from game.scripting.move_actors_action import MoveActorsAction
@@ -24,18 +24,18 @@ def main():
     cast.add_actor("bullet", Bullet())
     cast.add_actor("ship", Ship())
     cast.add_actor("alienLine1", Alien())
-    cast.add_actor("alienLine2", Alien())
-    first_alienLine2 = cast.get_first_actor('alienLine2')
-    first_alienLine2.move_down()
-    cast.add_actor("alienLine3", Alien())
-    first_alienLine3 = cast.get_first_actor('alienLine3')
-    first_alienLine3.move_down()
-    first_alienLine3.move_down()
-    cast.add_actor("alienLine4", Alien())
-    first_alienLine4 = cast.get_first_actor('alienLine4')
-    first_alienLine4.move_down()
-    first_alienLine4.move_down()
-    first_alienLine4.move_down()
+    # cast.add_actor("alienLine2", Alien())
+    # first_alienLine2 = cast.get_first_actor('alienLine2')
+    # first_alienLine2.move_down()
+    # cast.add_actor("alienLine3", Alien())
+    # first_alienLine3 = cast.get_first_actor('alienLine3')
+    # first_alienLine3.move_down()
+    # first_alienLine3.move_down()
+    # cast.add_actor("alienLine4", Alien())
+    # first_alienLine4 = cast.get_first_actor('alienLine4')
+    # first_alienLine4.move_down()
+    # first_alienLine4.move_down()
+    # first_alienLine4.move_down()
     # start the game
     keyboard_service = KeyboardService()
     video_service = VideoService()
