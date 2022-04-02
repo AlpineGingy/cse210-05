@@ -2,14 +2,7 @@ from game.scripting.action import Action
 
 
 class DrawActorsAction(Action):
-    """
-    An output action that draws all the actors.
-    
-    The responsibility of DrawActorsAction is to draw all the actors.
-
-    Attributes:
-        _video_service (VideoService): An instance of VideoService.
-    """
+    #An output action that draws all the actors.
 
     def __init__(self, video_service):
         """Constructs a new DrawActorsAction using the specified VideoService.
