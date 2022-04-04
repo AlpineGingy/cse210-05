@@ -7,12 +7,9 @@ from game.shared.point import Point
 
 class Ship(Actor):
     """
-    An Awsome Light Cycle
+    The ship shooting down the aliens
     
-    The responsibility of Cycle is to move itself and leave a trail behind.
-
-    Attributes:
-        _points (int): The number of points the food is worth.
+    The responsibility of Ship is to move itself.
     """
     def __init__(self):
         super().__init__()
@@ -52,7 +49,7 @@ class Ship(Actor):
         for i in range(1):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
-            text = ".^." if i == 0 else "#"
+            text = "<-^->" if i == 0 else "#"
             color = constants.WHITE if i == 0 else constants.RED
 
             
