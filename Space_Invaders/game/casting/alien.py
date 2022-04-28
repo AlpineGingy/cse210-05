@@ -63,7 +63,7 @@ class Alien(Actor):
         x = 800
         y = 100
 
-        for row in range(5):
+        for row in range(7):
             for i in range(20):
                 position = Point(x - i * constants.CELL_SIZE, y + row * constants.CELL_SIZE)
                 # if i == 4 and row == 0:
